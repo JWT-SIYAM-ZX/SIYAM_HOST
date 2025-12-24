@@ -70,16 +70,17 @@ def keep_alive():
 # --- End Flask Keep Alive ---
 
 # --- Configuration ---
-TOKEN = '8067690375:AAHVLHEc0XapIcdXGjoyQ-pYy32SQ-kK40E' # Replace with your actual token
-OWNER_ID = 6288814828 # Replace with your Owner ID
-ADMIN_ID = 6288814828 # Replace with your Admin ID (can be same as Owner)
-YOUR_USERNAME = '@onlysiyam99' # Replace with your Telegram username (without the @)
-UPDATE_CHANNEL = 'https://t.me/FFUIDALL' # Replace with your update channel link
+BOT_TOKEN = os.environ.get('BOT_TOKEN') # Replace with your actual token
+OWNER_ID = int(os.environ.get('OWNER_ID', '0')) # Replace with your Owner ID
+ADMIN_ID = int(os.environ.get('ADMIN_ID', str(OWNER_ID))) # Replace with your Admin ID (can be same as Owner)
+YOUR_USERNAME = os.environ.get('YOUR_USERNAME', '@onlysiyam99') # Replace with your Telegram username (without the @)
+UPDATE_CHANNEL = os.environ.get('UPDATE_CHANNEL', 'https://t.me/FFUIDALL') # Replace with your update channel link
 
 # Folder setup - using absolute paths
-BASE_DIR = os.path.abspath(os.path.dirname(__file__)) # Get script's directory
-UPLOAD_BOTS_DIR = os.path.join(BASE_DIR, 'upload_bots')
-IROTECH_DIR = os.path.join(BASE_DIR, 'inf') # Assuming this name is intentional
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+DATA_DIR = os.path.join(BASE_DIR, 'data')           # Render Disk
+UPLOAD_BOTS_DIR = os.path.join(DATA_DIR, 'upload_bots')
+IROTECH_DIR = os.path.join(DATA_DIR, 'inf')
 DATABASE_PATH = os.path.join(IROTECH_DIR, 'bot_data.db')
 
 # File upload limits
